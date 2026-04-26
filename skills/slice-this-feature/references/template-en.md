@@ -4,6 +4,14 @@
 
 One sentence. If the spec explicitly states a "Hypothesis" or "Bet", reproduce it here. If not, infer it from the Overview + Success Criteria in one sentence, and note that it's an inference.
 
+## Reveal mechanism
+
+**Recommendation:** [Progressive reveal (feature flags) | Incremental development]
+
+**Why:** [one or two signals that drove the choice — e.g., "Levels 1–2 target specific student cohorts, which requires flag-based audience targeting" or "All levels expose to the full user base; assuming the coding agent maintains context across iterations, layers can ship as built"]
+
+Suggestion only — engineering owns the final implementation choice.
+
 ## Levels
 
 Each level accumulates on the previous. Level 2 includes everything in Level 1. Level 3 includes Levels 1 and 2. The team builds the full feature; the layers get revealed in this order.

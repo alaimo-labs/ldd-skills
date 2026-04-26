@@ -1,0 +1,22 @@
+{
+  "name": "ldd-skills",
+  "owner": {
+    "name": "Martín Alaimo",
+    "url": "https://alaimolabs.com"
+  },
+  "plugins": [
+    {
+      "name": "ldd",
+      "source": "./",
+      "description": "Agent skills for Learn-Driven Development (LDD) — build whole, reveal selectively, validate by learning.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Martín Alaimo",
+        "url": "https://alaimolabs.com"
+      },
+      "homepage": "https://learndriven.dev",
+      "keywords": ["ldd", "learn-driven-development", "exposure-plan", "feature-slicing", "ai-agents"],
+      "license": "MIT"
+    }
+  ]
+}

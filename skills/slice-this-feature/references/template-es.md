@@ -4,6 +4,14 @@
 
 Una oración. Si la spec declara explícitamente una "Hypothesis" o "Bet", se reproduce aquí. Si no, se infiere desde el Overview y los Success Criteria, en una sola oración, y se señala que es una inferencia.
 
+## Mecanismo de exposición
+
+**Recomendación:** [Exposición progresiva (feature flags) | Desarrollo incremental]
+
+**Por qué:** [una o dos señales que justifican la elección — por ejemplo, "Los niveles 1–2 apuntan a cohortes específicas de estudiantes, lo que requiere targeting por feature flag" o "Todos los niveles se exponen a toda la base de usuarios; asumiendo que el agente de código mantiene contexto entre iteraciones, las capas se pueden desplegar a medida que se construyen"]
+
+Solo una sugerencia — el equipo de ingeniería decide la implementación final.
+
 ## Niveles
 
 Cada nivel acumula sobre el anterior. El Nivel 2 incluye todo lo del Nivel 1. El Nivel 3 incluye los Niveles 1 y 2. Se construye la feature completa; se revelan las capas según este plan.

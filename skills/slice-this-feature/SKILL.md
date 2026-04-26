@@ -5,11 +5,11 @@ description: Break a feature spec's hypothesis into an accumulative Exposure Pla
 
 # Slice This Feature — Accumulative Exposure Plan
 
-You are helping the user turn a functional feature spec into an **Exposure Plan**: an ordered set of reveal levels that validate the spec's hypothesis layer by layer. Build constructs the whole feature; Reveal turns on one layer at a time.
+You are helping the user turn a functional feature spec into an **Exposure Plan**: an ordered set of reveal levels that validate the spec's hypothesis layer by layer. The plan also recommends *how* the reveal happens — progressive reveal via feature flags by default, or incremental development when no level targets a sub-cohort and the coding agent can maintain context across iterations.
 
 ## Core mental model
 
-- **Build ≠ Reveal.** The team builds the complete feature. The Exposure Plan controls what becomes visible, in what order, to whom, under what belief. Feature flags are the mechanism of revelation — not a technical detail to hide, not the focus of the plan.
+- **Build ≠ Reveal.** The Exposure Plan controls what becomes visible, in what order, to whom, under what belief — independent of how the code lands. Default reveal mechanism: **build whole, flip layers on with feature flags**. Incremental development (no flags, ship each layer as built) is a lighter alternative only when every level exposes to the entire deployment population AND the coding agent maintains context across iterations. The plan suggests one mechanism; engineering owns the final call.
 - **Each level accumulates.** Level 2 includes everything in Level 1. Level 3 includes Levels 1 and 2. You never remove something that was revealed; you add.
 - **Each level tests one belief.** One clear falsifiable claim per level, written from the user/business perspective, never technical.
 - **The set of beliefs validated across levels = the spec's hypothesis resolved.** If the hypothesis holds after the last level, the team has learned that the feature works as claimed. If a belief fails mid-plan, later levels are at risk and may be re-scoped.
@@ -80,7 +80,21 @@ For each level, specify:
 
 Keep each level dense and short. A reader should grasp the entire level in under 30 seconds. No sub-sections inside a level, no quantitative-vs-qualitative signal split, no extensive commentary.
 
-### Step 5 — Close with parallel validations and open questions
+### Step 5 — Recommend the reveal mechanism
+
+Suggest whether the reveal happens via **progressive reveal (feature flags)** — build the whole feature, flip layers on selectively — or via **incremental development** — ship each layer as it's built, no flags. Engineering owns the final implementation choice; this is a recommendation based on the plan's audiences and the team's coding setup.
+
+**Default: progressive reveal (feature flags).** Two reasons drive this:
+1. **Sub-cohort targeting.** Most useful Exposure Plans gate early levels to a defined audience ("active students with 3+ flights"). Flags are the only way to deliver that — incremental dev ships to the whole deployment population.
+2. **Agent context coherence.** Building whole keeps the coding agent in a single coherent context, which most agent setups need to avoid drift between iterations.
+
+**Recommend incremental development only when BOTH hold:**
+- **No sub-cohort targeting in any level.** Every level exposes to the entire deployment population. If any level uses behavior/role gating, flags are required — incremental dev is off the table, regardless of agent capability.
+- **The coding agent maintains context across iterations.** The team uses persistent agent memory, durable project docs (CLAUDE.md, decision logs), or other recall mechanisms that prevent drift between iterations. With stateless agent runs, build-whole is safer.
+
+When recommending incremental dev, name the agent-context assumption explicitly so the team can challenge it. When recommending flags, name the driver: sub-cohort targeting, agent-context risk, or both. Keep the output section to two or three lines.
+
+### Step 6 — Close with parallel validations and open questions
 
 The Exposure Plan is about value — testing whether users want/use/benefit from each added layer. Some risks to the feature are NOT testable by revealing a product layer. Those go in a separate section:
 
@@ -98,7 +112,7 @@ Do not include preamble ("Here is the plan...") or closing fluff. The document I
 ## Anti-patterns — do not do these
 
 - **Don't design levels as audience cohorts.** A level is a product layer turning on, not a different group of users being exposed. Audience may grow across levels, but what defines a level is the new thing being revealed, not who sees it.
-- **Don't write a technical rollout plan.** No mention of feature flag platforms, canary infrastructure, deployment rings, or engineering sequencing. Feature flags are mentionable as the reveal mechanism — the skill focuses on what that reveal is testing, not how it's implemented.
+- **Don't write a technical rollout plan.** Recommending the *mechanism* (progressive reveal via feature flags vs. incremental development) is in scope. Naming specific flag platforms, canary infrastructure, deployment rings, or engineering sequencing is not. The skill focuses on what each reveal tests, not how it's implemented.
 - **Don't surface viability beliefs as levels.** Viability risks rarely validate by revealing a product layer. They go in Parallel validations.
 - **Don't list every possible risk as a belief.** One belief per level. Other risks go in open questions or parallel validations, not as extra beliefs.
 - **Don't produce vague validations.** "See how it goes" is not a validation. Validations have a concrete threshold or pattern and an advance/stop decision.
