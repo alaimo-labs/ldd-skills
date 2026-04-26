@@ -16,13 +16,13 @@ LDD's response: **build whole, reveal selectively**. Each feature is constructed
 
 ### The Learning Loop
 
-| Phase | Activity | Artifact |
-|---|---|---|
-| **Frame** | Shape the spec around a bet and testable hypothesis | Spec |
-| **Slice** | Design what to reveal, to whom, in what sequence | Exposure Plan |
-| **Build** | Produce technical spec and implement the whole feature with reveal controls | Technical Spec + code |
-| **Validate** | Reveal progressively and gather evidence | Evidence |
-| **Decide** | Double down, pivot, or abandon | Decision |
+| Phase        | Activity                                                                    | Artifact              |
+| ------------ | --------------------------------------------------------------------------- | --------------------- |
+| **Frame**    | Shape the spec around a bet and testable hypothesis                         | Spec                  |
+| **Slice**    | Design what to reveal, to whom, in what sequence                            | Exposure Plan         |
+| **Build**    | Produce technical spec and implement the whole feature with reveal controls | Technical Spec + code |
+| **Validate** | Reveal progressively and gather evidence                                    | Evidence              |
+| **Decide**   | Double down, pivot, or abandon                                              | Decision              |
 
 The full thesis lives at [learndriven.dev](https://learndriven.dev).
 
@@ -30,8 +30,8 @@ The full thesis lives at [learndriven.dev](https://learndriven.dev).
 
 ### Skills (cross-agent compatible)
 
-| Skill | Phase | Description |
-|---|---|---|
+| Skill                                                | Phase | Description                                                                                                                                                                           |
+| ---------------------------------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`slice-this-feature`](./skills/slice-this-feature/) | Slice | Turn a feature spec's hypothesis into an accumulative Exposure Plan: 1–5 reveal levels, each testing one belief, with audience, duration, and validation criteria. Bilingual (EN/ES). |
 
 All skills follow the [Agent Skills](https://agentskills.io) open standard and work with Claude Code, Gemini CLI, Cursor, Codex CLI, and other compatible harnesses.
@@ -67,7 +67,7 @@ Each skill is triggered by activation phrases documented in its `SKILL.md`. For 
 
 ## Author
 
-[Martín Alaimo](https://alaimolabs.com)
+[Alaimo Labs](https://alaimolabs.com)
 
 ## License
 
